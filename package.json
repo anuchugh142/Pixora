@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "npx kill-port 7000 && nodemon backened/index.js",
+    "dev": "npx kill-port 7000 && nodemon --experimental-modules backened/index.js",
     "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
     "start": "nodemon backened/index.js",
     "heroku-postbuild": "npm install --legacy-peer-deps && npm install --prefix frontend --legacy-peer-deps && npm run build --prefix frontend"
@@ -20,6 +20,7 @@
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "datauri": "^4.1.0",
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
     "kill-port": "^2.0.1",
