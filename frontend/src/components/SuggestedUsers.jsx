@@ -17,7 +17,7 @@ const SuggestedUsers = () => {
   const handleFollowToggle = async (targetUserId) => {
     try {
       const res = await axios.post(
-        `http://localhost:7000/api/v1/user/followorunfollow/${targetUserId}`,
+        `https://pixora-2.onrender.com/api/v1/user/followorunfollow/${targetUserId}`,
         {},
         { withCredentials: true }
       );

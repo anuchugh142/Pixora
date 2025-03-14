@@ -36,7 +36,7 @@ const Profile = () => {
   const handleFollowToggle = async () => {
     try {
       const res = await axios.post(
-        `http://localhost:7000/api/v1/user/followorunfollow/${userProfile._id}`,{},
+        `https://pixora-2.onrender.com/api/v1/user/followorunfollow/${userProfile._id}`,{},
       //formData,
         { withCredentials: true,
          // Make sure token is available and correct
@@ -48,7 +48,7 @@ const Profile = () => {
         dispatch(toggleFollowing(userProfile._id));
 
         // ✅ Refresh userProfile state after follow/unfollow
-        const updatedProfile = await axios.get(`http://localhost:7000/api/v1/user/${userProfile._id}/profile`,{}, {
+        const updatedProfile = await axios.get(`https://pixora-2.onrender.com/api/v1/user/${userProfile._id}/profile`,{}, {
           withCredentials: true,
           
         });

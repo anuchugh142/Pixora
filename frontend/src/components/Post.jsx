@@ -32,7 +32,7 @@ const Post = ({ post }) => {
     const likeOrDislikeHandler = async () => {
         try {
             const action = liked ? 'dislike' : 'like';
-            const res = await axios.get(`http://localhost:7000/api/v1/post/${post._id}/${action}`, { withCredentials: true });
+            const res = await axios.get(`https://pixora-2.onrender.com/api/v1/post/${post._id}/${action}`, { withCredentials: true });
             
             if (res.data.success) {
                 const updatedLikes = liked ? postLike - 1 : postLike + 1;
@@ -58,7 +58,7 @@ const Post = ({ post }) => {
     // ✅ Comment Handler
     const commentHandler = async () => {
         try {
-            const res = await axios.post(`http://localhost:7000/api/v1/post/${post._id}/comment`, { text }, {
+            const res = await axios.post(`https://pixora-2.onrender.com/api/v1/post/${post._id}/comment`, { text }, {
                 headers: { 'Content-Type': 'application/json' },
                 withCredentials: true
             });
@@ -84,7 +84,7 @@ const Post = ({ post }) => {
     // ✅ Delete Post Handler (Only for Author)
     const deletePostHandler = async () => {
         try {
-            const res = await axios.delete(`http://localhost:7000/api/v1/post/delete/${post?._id}`, { withCredentials: true });
+            const res = await axios.delete(`https://pixora-2.onrender.com/api/v1/post/delete/${post?._id}`, { withCredentials: true });
             
             if (res.data.success) {
                 const updatedPostData = posts.filter((postItem) => postItem?._id !== post?._id);
@@ -100,7 +100,7 @@ const Post = ({ post }) => {
     // ✅ Bookmark Handler
     const bookmarkHandler = async () => {
         try {
-            const res = await axios.get(`http://localhost:7000/api/v1/post/${post?._id}/bookmark`, { withCredentials: true });
+            const res = await axios.get(`https://pixora-2.onrender.com/api/v1/post/${post?._id}/bookmark`, { withCredentials: true });
 
             if (res.data.success) {
                 setBookmarked(!bookmarked);
