@@ -16,13 +16,17 @@ import {
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
+// 🔥 Fixed Redux DevTools Extension Import
+import { composeWithDevTools } from '@redux-devtools/extension'
 
+// ✅ Persist Config
 const persistConfig = {
     key: 'root',
     version: 1,
     storage,
 }
 
+// ✅ Combine Reducers
 const rootReducer = combineReducers({
     auth:authSlice,
     post:postSlice,
@@ -31,10 +35,12 @@ const rootReducer = combineReducers({
     realTimeNotification:rtnSlice
 })
 
+// ✅ Persisted Reducer
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
+// ✅ Redux Store
 const store = configureStore({
-    reducer: persistedReducer, rootReducer,
+    reducer: persistedReducer,
     devTools: process.env.NODE_ENV !== 'production',
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
@@ -42,5 +48,6 @@ const store = configureStore({
                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             },
         }),
-});
+})
+
 export default store;
